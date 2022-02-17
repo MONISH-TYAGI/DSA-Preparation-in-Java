@@ -1,0 +1,28 @@
+//Ques-> https://www.hackerrank.com/contests/co-define/challenges/nearest-100-1
+
+//Code->
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+      Scanner scn=new Scanner(System.in);
+      int x=scn.nextInt();
+      int lastTwoNumbers=x%100;
+      int remNumReq=100-lastTwoNumbers;
+      if(remNumReq==100)
+      {
+        System.out.println(0);
+      }
+      else
+      {
+                System.out.println(remNumReq);
+
+      }
+    }
+}
