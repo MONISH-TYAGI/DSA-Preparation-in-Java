@@ -1,4 +1,4 @@
-//Ques->https://nados.io/question/remove-leaves-in-generic-tree?zen=true
+//Ques->https://nados.io/question/linearize-a-generic-tree?zen=true
 
 //Code
 import java.io.*;
@@ -134,26 +134,36 @@ public class Main {
   }
 
   public static void removeLeaves(Node node) {
-    // write your code here
-     for (Node child : node.children) {
-      mirror(child);
+    for (int i = node.children.size() - 1; i >= 0; i--) {
+      Node child = node.children.get(i);
+      if (child.children.size() == 0) {
+        node.children.remove(i);
+      }
     }
-    Collections.reverse(node.children);
+
+    for(Node child: node.children){
+      removeLeaves(child);
+    }
   }
 
-  public static void removeLeaves(Node node) {
+  public static Node linearizeEfficient(Node node){
     // write your code here
-    if(node==null) return ;
-    for(int i=node.children.size()-1;i>=0;i--)
-    {
-      //remove your own leaves
-      Node child=node.children.get(i);
-      if(child.children.size()==0)
-      node.children.remove(i);
-    }
-    //request the children
-    for(Node child:node.children)
-    removeLeaves(child);
+   if(node.children.size()==0)
+   {
+     return node;
+   }
+   Node lastChild=node.children.get(node.children.size()-1);
+   Node lastKiTail=linearizeEfficient(lastChild);
+   while(node.children.size()>1)
+   {
+     Node slastChild=node.children.get(node.children.size()-2);
+     Node slastKiTail=linearizeEfficient(slastChild);
+     slastKiTail.children.add(lastChild);
+     node.children.remove(node.children.size()-1);
+     lastChild=slastChild;
+   }
+   return lastKiTail;
+
   }
 
   public static void main(String[] args) throws Exception {
@@ -166,7 +176,7 @@ public class Main {
     }
 
     Node root = construct(arr);
-    removeLeaves(root);
+    linearizeEfficient(root);
     display(root);
   }
 

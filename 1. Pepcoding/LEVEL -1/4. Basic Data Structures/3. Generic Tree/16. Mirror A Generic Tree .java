@@ -1,4 +1,4 @@
-//Ques->https://nados.io/question/remove-leaves-in-generic-tree?zen=true
+//Ques->https://nados.io/question/mirror-a-generic-tree?zen=true
 
 //Code
 import java.io.*;
@@ -82,10 +82,10 @@ public class Main {
     return h;
   }
 
-  public static void traversals(Node node) {
+  public static void traversals(Node node){
     System.out.println("Node Pre " + node.data);
 
-    for (Node child : node.children) {
+    for(Node child: node.children){
       System.out.println("Edge Pre " + node.data + "--" + child.data);
       traversals(child);
       System.out.println("Edge Post " + node.data + "--" + child.data);
@@ -94,30 +94,30 @@ public class Main {
     System.out.println("Node Post " + node.data);
   }
 
-  public static void levelOrderLinewiseZZ(Node node) {
+  public static void levelOrderLinewiseZZ(Node node){
     Stack<Node> stack = new Stack<>();
     stack.add(node);
 
     Stack<Node> cstack = new Stack<>();
     int level = 0;
 
-    while (stack.size() > 0) {
+    while(stack.size() > 0){
       node = stack.pop();
       System.out.print(node.data + " ");
 
-      if (level % 2 == 0) {
-        for (int i = 0; i < node.children.size(); i++) {
+      if(level % 2 == 0){
+        for(int i = 0; i < node.children.size(); i++){
           Node child = node.children.get(i);
           cstack.push(child);
         }
       } else {
-        for (int i = node.children.size() - 1; i >= 0; i--) {
+        for(int i = node.children.size() - 1; i >= 0; i--){
           Node child = node.children.get(i);
           cstack.push(child);
         }
       }
 
-      if (stack.size() == 0) {
+      if(stack.size() == 0){
         stack = cstack;
         cstack = new Stack<>();
         level++;
@@ -126,34 +126,13 @@ public class Main {
     }
   }
 
-  public static void mirror(Node node) {
-    for (Node child : node.children) {
-      mirror(child);
-    }
-    Collections.reverse(node.children);
-  }
-
-  public static void removeLeaves(Node node) {
+  public static void mirror(Node node){
     // write your code here
-     for (Node child : node.children) {
-      mirror(child);
-    }
-    Collections.reverse(node.children);
-  }
-
-  public static void removeLeaves(Node node) {
-    // write your code here
-    if(node==null) return ;
-    for(int i=node.children.size()-1;i>=0;i--)
-    {
-      //remove your own leaves
-      Node child=node.children.get(i);
-      if(child.children.size()==0)
-      node.children.remove(i);
-    }
-    //request the children
     for(Node child:node.children)
-    removeLeaves(child);
+    {
+      mirror(child);
+    }
+    Collections.reverse(node.children);
   }
 
   public static void main(String[] args) throws Exception {
@@ -166,7 +145,8 @@ public class Main {
     }
 
     Node root = construct(arr);
-    removeLeaves(root);
+    display(root);
+    mirror(root);
     display(root);
   }
 
