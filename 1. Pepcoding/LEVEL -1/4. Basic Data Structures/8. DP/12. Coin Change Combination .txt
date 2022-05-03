@@ -19,7 +19,7 @@ int []dp=new int[amt+1];
 dp[0]=1;
 for(int coin:coins)
 {
-    for(int tar=1;tar<=amt;tar++)
+     for(int tar=1;tar<=amt;tar++)
     {
         if(tar>=coin)
         {
