@@ -7,6 +7,7 @@ public class Main {
 
   public static void main(String[] args) {
     // Write your code here
+    //cout cout
     System.out.println("*****");
     System.out.println("   * ");
     System.out.println("  *  ");
