@@ -1,4 +1,4 @@
-// leetcode 354: https://leetcode.com/problems/russian-doll-envelopes/
+// leetcode 354: https://linteetcode.com/problems/russian-doll-envelopes/
 import java.util.*;
 
 class Solution {

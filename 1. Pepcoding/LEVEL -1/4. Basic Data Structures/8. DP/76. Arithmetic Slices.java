@@ -1,4 +1,4 @@
-// leetcode 413: https://leetcode.com/problems/arithmetic-slices/
+// leetcode 413: 	
 
 class Solution {
     // Time - O(N), Space - O(1)
