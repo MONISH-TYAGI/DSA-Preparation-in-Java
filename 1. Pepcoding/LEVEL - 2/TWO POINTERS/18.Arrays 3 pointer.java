@@ -1,0 +1,1 @@
+//https://www.interviewbit.com/problems/array-3-pointers/
