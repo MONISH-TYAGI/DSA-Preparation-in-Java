@@ -38,45 +38,36 @@ public class Main {
       int src = Integer.parseInt(br.readLine());
 
       // write all your codes here
-      boolean []visited=new boolean[vtces];
-      travelAround(graph,visited,src,1,src+"",src);
-
+   boolean []vis=new boolean[vtces];
+   DFS(src,vis,graph,1,""+src);
 
    }
-   public static void travelAround(ArrayList<Edge> []graph,boolean []visited,int src ,int csf,String psf,int orig)
-{
-if(csf==graph.length)
-{
-   System.out.print(psf);
-   boolean flag=false;
-   for(Edge e:graph[src])
+   public static boolean isEdge(ArrayList<Edge> []adj,int src,int dest)
    {
-      if(e.nbr==orig)
-      {
-         flag=true;
-         break;
-      }
+      for(Edge e:adj[src])
+      if(e.nbr==dest) return true;
+      return false;
    }
-       if(flag)
-      {
-System.out.println("*");
-      }
-      else
-      {
-         System.out.println(".");
-      }
-   return ;
-}
-visited[src]=true;
-for(Edge e:graph[src])
+public static void DFS(int src,boolean []vis,ArrayList<Edge> []adj,int visCount,String res)
 {
-   if(visited[e.nbr]==false)
+   if(vis[src]==true) return ;
+   vis[src]=true;
+   if(visCount==adj.length)
    {
-      travelAround(graph,visited,e.nbr,csf+1,psf+e.nbr,orig);
+      System.out.print(res);
+      int orig=res.charAt(0)-'0';
+      if(isEdge(adj,orig,src))
+        System.out.println("*");
+        else
+          System.out.println(".");
+      vis[src]=false;
+      return ;
    }
-}
-visited[src]=false;
-
+   for(Edge e:adj[src])
+   {
+      DFS(e.nbr,vis,adj,visCount+1,res+e.nbr);
+   }
+   vis[src]=false;
 }
 
 }

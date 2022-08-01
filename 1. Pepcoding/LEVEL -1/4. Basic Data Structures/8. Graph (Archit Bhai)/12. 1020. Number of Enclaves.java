@@ -1,3 +1,4 @@
+//https://leetcode.com/problems/number-of-enclaves/
 class Solution {
         int[][] directions = { { +1, 0 }, { -1, 0 }, { 0, +1 }, { 0, -1 } };
     // down, up, right, left

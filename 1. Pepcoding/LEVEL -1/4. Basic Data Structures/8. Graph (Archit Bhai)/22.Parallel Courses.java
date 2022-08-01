@@ -45,7 +45,7 @@ public static int BFS(int n,ArrayList<Integer>[]adj)
         for(int i=0;i<n;i++) adj[i]=new ArrayList<>();
         for(int []edge:prerequisites)
         {
-            adj[edge[1]-1].add(edge[0]-1);
+            adj[edge[0]-1].add(edge[1]-1);
         }
         return BFS(n,adj);
    //  return (n,)
