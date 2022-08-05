@@ -1,5 +1,6 @@
 //Ques->https://www.hackerrank.com/contests/co-define/challenges/pattern-404
 
+
 //Code
 import java.io.*;
 import java.util.*;
